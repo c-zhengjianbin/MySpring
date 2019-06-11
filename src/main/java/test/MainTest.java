@@ -1,6 +1,8 @@
 package test;
 
 import framework.starter.MySpringApplication;
+import framework.web.server.TomcatServer;
+import org.apache.catalina.LifecycleException;
 
 /**
  * @author : xiaoheshang
@@ -13,6 +15,12 @@ public class MainTest {
 
     public static void main(String[] args){
         MySpringApplication.run(MainTest.class, args);
+        TomcatServer tomcatServer = new TomcatServer(args);
+        try {
+            tomcatServer.startServer();
+        } catch (LifecycleException e) {
+            e.printStackTrace();
+        }
     }
 
 }
