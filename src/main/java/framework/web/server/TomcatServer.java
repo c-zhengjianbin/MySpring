@@ -1,6 +1,6 @@
 package framework.web.server;
 
-import framework.web.servlet.TestServlet;
+import framework.web.servlet.MyDispatchServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
@@ -31,11 +31,11 @@ public class TomcatServer {
         context.setPath("");
         context.addLifecycleListener(new Tomcat.FixContextListener());
 
-        TestServlet testServlet = new TestServlet();
-        Tomcat.addServlet(context, "testServlet", testServlet);
+        MyDispatchServlet myDispatchServlet = new MyDispatchServlet();
+        Tomcat.addServlet(context, "dispatchServlet", myDispatchServlet);
 
         //URL 映射
-        context.addServletMappingDecoded("/testServlet", "testServlet");
+        context.addServletMappingDecoded("/", "dispatchServlet");
         tomcat.getHost().addChild(context);
 
         //设置为非守护线程

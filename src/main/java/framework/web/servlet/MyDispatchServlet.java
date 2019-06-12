@@ -6,11 +6,12 @@ import framework.handler.MappingInfo;
 import javax.servlet.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 /**
  * Created by zhengjianbin on 2019/6/11.
  */
-public class TestServlet implements Servlet {
+public class MyDispatchServlet implements Servlet {
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
@@ -24,7 +25,8 @@ public class TestServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        for(MappingInfo mappingInfo : HoldMapper.mappingInfoList){
+        List<MappingInfo> mappingInfos = HoldMapper.mappingInfoList;
+        for(MappingInfo mappingInfo : mappingInfos){
             try {
                 mappingInfo.handle(servletRequest, servletResponse);
             } catch (IllegalAccessException e) {
@@ -35,8 +37,7 @@ public class TestServlet implements Servlet {
                 e.printStackTrace();
             }
         }
-
-        servletResponse.getWriter().write("Hello MySpring Servlet");
+      //  servletResponse.getWriter().write("Hello MySpring Servlet");
     }
 
     @Override
