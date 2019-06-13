@@ -1,7 +1,7 @@
 package framework.web.servlet;
 
-import framework.handler.HoldMapper;
-import framework.handler.MappingInfo;
+import framework.handler.AnnotationProcessor;
+import framework.handler.ControllerMappingInfo;
 
 import javax.servlet.*;
 import java.io.IOException;
@@ -25,10 +25,10 @@ public class MyDispatchServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        List<MappingInfo> mappingInfos = HoldMapper.mappingInfoList;
-        for(MappingInfo mappingInfo : mappingInfos){
+        List<ControllerMappingInfo> controllerMappingInfos = AnnotationProcessor.controllerMappingInfoList;
+        for(ControllerMappingInfo controllerMappingInfo : controllerMappingInfos){
             try {
-                mappingInfo.handle(servletRequest, servletResponse);
+                controllerMappingInfo.invoke(servletRequest, servletResponse);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {
@@ -37,7 +37,6 @@ public class MyDispatchServlet implements Servlet {
                 e.printStackTrace();
             }
         }
-      //  servletResponse.getWriter().write("Hello MySpring Servlet");
     }
 
     @Override

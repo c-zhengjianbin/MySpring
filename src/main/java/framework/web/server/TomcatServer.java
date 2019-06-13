@@ -26,7 +26,6 @@ public class TomcatServer {
         tomcat = new Tomcat();
         tomcat.setPort(18080);
 
-
         Context context = new StandardContext();
         context.setPath("");
         context.addLifecycleListener(new Tomcat.FixContextListener());

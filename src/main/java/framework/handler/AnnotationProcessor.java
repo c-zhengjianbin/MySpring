@@ -14,21 +14,35 @@ import java.util.List;
  *
  * @time : 2019/6/12 - 2:57 PM
  * @Param :
- * @function : Mapping 持有者
+ * @function : 注解处理器
  */
-public class HoldMapper {
+public class AnnotationProcessor {
 
-        public static List<MappingInfo> mappingInfoList = new ArrayList<MappingInfo>();
+        public static List<ControllerMappingInfo> controllerMappingInfoList = new ArrayList<>();
 
+        /**
+         * @author : xiaoheshang
+         *
+         * @time : 2019/6/13 - 1:41 PM
+         * @Param :
+         * @function : 解析扫描到的类包含的注解
+         */
         public static void resolveMappingHandler(List<Class<?>> classes){
             for(Class<?>  cls: classes){
                 if(cls.isAnnotationPresent(Controller.class)){
-                    presentHandlerFromController(cls);
+                    handleControllerAnnotation(cls);
                 }
             }
         }
 
-        private static void presentHandlerFromController(Class<?> cls){
+        /**
+         * @author : xiaoheshang
+         *
+         * @time : 2019/6/13 - 1:41 PM
+         * @Param :
+         * @function : 处理Controller 注解
+         */
+        private static void handleControllerAnnotation(Class<?> cls){
             Method[] methods = cls.getDeclaredMethods();
             for(Method method : methods){
                 if(!method.isAnnotationPresent(RequestMapping.class)){
@@ -42,8 +56,8 @@ public class HoldMapper {
                     }
                 }
                 String[] params = paramList.toArray(new String[paramList.size()]);
-                MappingInfo mappingInfo = new MappingInfo(uri, method, cls, params);
-                HoldMapper.mappingInfoList.add(mappingInfo);
+                ControllerMappingInfo controllerMappingInfo = new ControllerMappingInfo(uri, method, cls, params);
+                AnnotationProcessor.controllerMappingInfoList.add(controllerMappingInfo);
             }
         }
 
