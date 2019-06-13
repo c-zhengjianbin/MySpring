@@ -1,6 +1,6 @@
 package framework.web.server;
 
-import framework.web.servlet.MyDispatchServlet;
+import framework.web.servlet.MyDispatcherServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
@@ -30,8 +30,8 @@ public class TomcatServer {
         context.setPath("");
         context.addLifecycleListener(new Tomcat.FixContextListener());
 
-        MyDispatchServlet myDispatchServlet = new MyDispatchServlet();
-        Tomcat.addServlet(context, "dispatchServlet", myDispatchServlet);
+        MyDispatcherServlet myDispatcherServlet = new MyDispatcherServlet();
+        Tomcat.addServlet(context, "dispatchServlet", myDispatcherServlet);
 
         //URL 映射
         context.addServletMappingDecoded("/", "dispatchServlet");

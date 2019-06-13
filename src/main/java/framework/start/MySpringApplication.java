@@ -1,5 +1,6 @@
 package framework.start;
 
+import framework.bean.BeanFactory;
 import framework.core.ClassScanner;
 import framework.handler.AnnotationProcessor;
 import framework.web.server.TomcatServer;
@@ -22,6 +23,7 @@ public class MySpringApplication {
         try {
             List<Class<?>> classList = ClassScanner.scannPackage(cls.getPackage().getName());
             classList.forEach( it -> System.out.println("扫描后得到的ClassName:"+it.getName()));
+            BeanFactory.initializeBean(classList);
             AnnotationProcessor.resolveMappingHandler(classList);
             tomcatServer.startServer();
         } catch (LifecycleException e) {

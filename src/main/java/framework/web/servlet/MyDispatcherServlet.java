@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by zhengjianbin on 2019/6/11.
  */
-public class MyDispatchServlet implements Servlet {
+public class MyDispatcherServlet implements Servlet {
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {

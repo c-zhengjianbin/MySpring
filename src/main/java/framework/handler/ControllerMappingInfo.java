@@ -1,5 +1,7 @@
 package framework.handler;
 
+import framework.bean.BeanFactory;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +47,7 @@ public class ControllerMappingInfo {
             parameters[i] = request.getParameter(methodParas[i]);
         }
 
-        Object controllerObject = controller.newInstance();
+        Object controllerObject = BeanFactory.getBean(controller);
         Object responseObject = method.invoke(controllerObject, parameters);
         response.getWriter().print(responseObject.toString());
         return true;
