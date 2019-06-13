@@ -14,20 +14,20 @@
     ├── main
     │   ├── java
     │   │   ├── framework            
-    │   │   │   ├── annotation     -自定义注解
+    │   │   │   ├── annotation------注解包
     │   │   │   │   └── mvc
     │   │   │   ├── beans
     │   │   │   ├── context
-    │   │   │   ├── core     -核心
+    │   │   │   ├── core------核心
     │   │   │   │   └── ClassScanner.java
-    │   │   │   ├── handler     -Mapping 处理
+    │   │   │   ├── handler------Mapping 处理
     │   │   │   │   ├── HoldMapper.java
     │   │   │   │   └── MappingInfo.java
-    │   │   │   ├── start     -启动包
+    │   │   │   ├── start------启动包
     │   │   │   │   └── MySpringApplication.java
     │   │   │   └── web
-    │   │   │       ├── server     -Tomcat 配置
-    │   │   │       └── servlet     -DispatchServlet
+    │   │   │       ├── server------Tomcat 配置
+    │   │   │       └── servlet------DispatchServlet
     │   │   └── test
     │   │       ├── MainTest.java
     │   │       └── controller
