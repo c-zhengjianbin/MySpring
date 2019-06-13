@@ -6,7 +6,6 @@
     
 *  🚩功能:
     > 1.集成Tomcat
-    > 2.实现自定义注解：Controller、RequestMapping、RequestParam等    
     > 3.实现自定义Dispatch处理请求转发    
     > 4.功能不断完善中......🚧
     
