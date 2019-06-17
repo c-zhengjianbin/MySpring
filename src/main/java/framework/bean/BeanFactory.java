@@ -45,7 +45,7 @@ public class BeanFactory {
      */
     public static void initializeBean(List<Class<?>> classList){
         classList.forEach(aClass -> {
-            if(!(aClass.isAnnotationPresent(Bean.class) && aClass.isAnnotationPresent(Controller.class))){
+            if(!aClass.isAnnotationPresent(Bean.class) && !aClass.isAnnotationPresent(Controller.class)){
                 return;
             }
             try {
@@ -55,7 +55,7 @@ public class BeanFactory {
                         Class<?> fieldType = field.getType();
                         Object dependObject = getBean(fieldType);
                         if(dependObject == null){
-                            continue;
+                            dependObject = fieldType.newInstance();
                         }
                         field.setAccessible(true);
                         field.set(o, dependObject);
