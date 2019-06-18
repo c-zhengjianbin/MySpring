@@ -1,7 +1,7 @@
 package framework.web.servlet;
 
-import framework.handler.AnnotationProcessor;
-import framework.handler.ControllerMappingInfo;
+import framework.annotation.processor.AnnotationProcessor;
+import framework.mappinghandler.ControllerMappingInfo;
 
 import javax.servlet.*;
 import java.io.IOException;
