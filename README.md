@@ -19,39 +19,49 @@
 * ### ☘️目录:
      * 项目结构与包名注释🌴。
     ```
-    ├── main
-    │   ├── java
-    │   │   ├── framework
-    │   │   │   ├── annotation
-    │   │   │   │   ├── bean
-    │   │   │   │   │   ├── Autowired.java
-    │   │   │   │   │   └── Bean.java
-    │   │   │   │   ├── mvc
-    │   │   │   │   │   ├── Controller.java
-    │   │   │   │   │   ├── RequestMapping.java
-    │   │   │   │   │   └── RequestParam.java
-    │   │   │   │   └── processor------注解处理器
-    │   │   │   │       └── AnnotationProcessor.java
-    │   │   │   ├── bean
-    │   │   │   │   └── BeanFactory.java
-    │   │   │   ├── context
-    │   │   │   ├── core
-    │   │   │   │   └── ClassScanner.java
-    │   │   │   ├── mappinghandler------Mapping 处理
-    │   │   │   │   └── ControllerMappingInfo.java
-    │   │   │   ├── start------启动包
-    │   │   │   │   └── MySpringApplication.java
-    │   │   │   └── web
-    │   │   │       ├── server------Tomcat 配置
-    │   │   │       │   └── TomcatServer.java
-    │   │   │       └── servlet------请求转发包
-    │   │   │           └── MyDispatcherServlet.java
-    │   │   └── test------测试包
-    │   │       ├── MainTest.java
-    │   │       ├── controller
-    │   │       │   └── TestController.java
-    │   │       └── service
-    │   │           └── UserService.java
+    ├── framework
+    │   ├── annotation
+    │   │   ├── bean
+    │   │   │   ├── Autowired.java
+    │   │   │   └── Bean.java
+    │   │   ├── mvc
+    │   │   │   ├── Controller.java
+    │   │   │   ├── RequestMapping.java
+    │   │   │   └── RequestParam.java
+    │   │   └── processor-----注解处理器
+    │   │       ├── support-----默认处理器
+    │   │       │   ├── DefaultAbstractAnnotationProcessor.java
+    │   │       │   └── DefaultAnnotationProcessor.java
+    │   │       └── v1
+    │   │           └── AnnotationProcessor.java
+    │   ├── bean
+    │   │   ├── definition
+    │   │   │   └── BeanDefinition.java
+    │   │   ├── factory
+    │   │   │   ├── AbstractDefaultBeanFactory.java
+    │   │   │   └── DefaultBeanFactory.java
+    │   │   ├── v1
+    │   │   │   └── BeanFactory.java
+    │   │   └── v2
+    │   │       └── BeanFactory.java
+    │   ├── context
+    │   ├── core
+    │   │   └── ClassScanner.java
+    │   ├── mappinghandler------Mapping 处理
+    │   │   └── ControllerMappingInfo.java
+    │   ├── start------启动包
+    │   │   └── MySpringApplication.java
+    │   └── web
+    │       ├── server------Tomcat 配置
+    │       │   └── TomcatServer.java
+    │       └── servlet------请求转发包
+    │           └── MyDispatcherServlet.java
+    └── test------测试包
+        ├── MainTest.java
+        ├── controller
+        │   └── TestController.java
+        └── service
+            └── UserService.java
     ```
     
 ## 二、知识体系

@@ -22,7 +22,7 @@ public class ControllerMappingInfo {
     private Method method;
     private Class<?> controller;
     private String[] methodParas;
-    //TODO 需要优化此处的BeanFactory
+    //TODO 需要优化此处的BeanFactory，梳理出整体逻辑
     private BeanFactory beanFactory;
     public ControllerMappingInfo(String uri, Method method, Class<?> controller, String[] methodParas, BeanFactory beanFactory) {
         this.uri = uri;
