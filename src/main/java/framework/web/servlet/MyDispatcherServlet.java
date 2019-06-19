@@ -1,6 +1,6 @@
 package framework.web.servlet;
 
-import framework.annotation.processor.AnnotationProcessor;
+import framework.annotation.processor.v1.AnnotationProcessor;
 import framework.mappinghandler.ControllerMappingInfo;
 
 import javax.servlet.*;

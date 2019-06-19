@@ -1,8 +1,9 @@
-package framework.bean;
+package framework.bean.v1;
 
 import framework.annotation.bean.Autowired;
 import framework.annotation.bean.Bean;
 import framework.annotation.mvc.Controller;
+import framework.bean.factory.AbstractDefaultBeanFactory;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -15,14 +16,9 @@ import java.util.function.Consumer;
  *
  * @time : 2019/6/13 - 2:03 PM
  * @Param :
- * @function : 实例化Bean 工厂
+ * @function : 实例化Bean 工厂，Bean 的依赖注入在初始化时触发
  */
-public class BeanFactory {
-
-    /**
-     * Bean 容器
-     */
-    public static Map<Class<?>, Object> beanContainer = new ConcurrentHashMap<>();
+public class BeanFactory extends AbstractDefaultBeanFactory {
 
     /**
      * @author : xiaoheshang
@@ -31,7 +27,8 @@ public class BeanFactory {
      * @Param :
      * @function : 从容器中获取Bean
      */
-    public static Object getBean(Class<?> cls){
+    @Override
+    public Object getBean(Class<?> cls){
        return beanContainer.get(cls);
     }
 
@@ -43,7 +40,8 @@ public class BeanFactory {
      * @function : 初始化Beans
      * TODO: 需要解决循环注入问题、根据变量名获取实例问题
      */
-    public static void initializeBean(List<Class<?>> classList){
+    @Override
+    public void initializeBean(List<Class<?>> classList){
         classList.forEach(aClass -> {
             if(!aClass.isAnnotationPresent(Bean.class) && !aClass.isAnnotationPresent(Controller.class)){
                 return;

@@ -1,8 +1,9 @@
-package framework.annotation.processor;
+package framework.annotation.processor.v1;
 
 import framework.annotation.mvc.Controller;
 import framework.annotation.mvc.RequestMapping;
 import framework.annotation.mvc.RequestParam;
+import framework.bean.v1.BeanFactory;
 import framework.mappinghandler.ControllerMappingInfo;
 
 import java.lang.reflect.Method;
@@ -28,10 +29,10 @@ public class AnnotationProcessor {
          * @Param :
          * @function : 解析扫描到的类包含的注解
          */
-        public static void resolveMappingHandler(List<Class<?>> classes){
+        public static void resolveMappingHandler(List<Class<?>> classes, BeanFactory beanFactory){
             for(Class<?>  cls: classes){
                 if(cls.isAnnotationPresent(Controller.class)){
-                    handleControllerAnnotation(cls);
+                    handleControllerAnnotation(cls, beanFactory);
                 }
             }
         }
@@ -43,7 +44,7 @@ public class AnnotationProcessor {
          * @Param :
          * @function : 处理Controller 注解
          */
-        private static void handleControllerAnnotation(Class<?> cls){
+        private static void handleControllerAnnotation(Class<?> cls, BeanFactory beanFactory){
             Method[] methods = cls.getDeclaredMethods();
             for(Method method : methods){
                 if(!method.isAnnotationPresent(RequestMapping.class)){
@@ -57,7 +58,7 @@ public class AnnotationProcessor {
                     }
                 }
                 String[] params = paramList.toArray(new String[paramList.size()]);
-                ControllerMappingInfo controllerMappingInfo = new ControllerMappingInfo(uri, method, cls, params);
+                ControllerMappingInfo controllerMappingInfo = new ControllerMappingInfo(uri, method, cls, params, beanFactory);
                 AnnotationProcessor.controllerMappingInfoList.add(controllerMappingInfo);
             }
         }

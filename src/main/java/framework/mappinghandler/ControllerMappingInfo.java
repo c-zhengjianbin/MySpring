@@ -1,6 +1,6 @@
 package framework.mappinghandler;
 
-import framework.bean.BeanFactory;
+import framework.bean.v1.BeanFactory;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -22,12 +22,14 @@ public class ControllerMappingInfo {
     private Method method;
     private Class<?> controller;
     private String[] methodParas;
-
-    public ControllerMappingInfo(String uri, Method method, Class<?> controller, String[] methodParas) {
+    //TODO 需要优化此处的BeanFactory
+    private BeanFactory beanFactory;
+    public ControllerMappingInfo(String uri, Method method, Class<?> controller, String[] methodParas, BeanFactory beanFactory) {
         this.uri = uri;
         this.method = method;
         this.controller = controller;
         this.methodParas = methodParas;
+        this.beanFactory = beanFactory;
     }
 
     /**
@@ -47,7 +49,7 @@ public class ControllerMappingInfo {
             parameters[i] = request.getParameter(methodParas[i]);
         }
 
-        Object controllerObject = BeanFactory.getBean(controller);
+        Object controllerObject = beanFactory.getBean(controller);
         Object responseObject = method.invoke(controllerObject, parameters);
         response.getWriter().print(responseObject.toString());
         return true;

@@ -1,8 +1,8 @@
 package framework.start;
 
-import framework.bean.BeanFactory;
+import framework.bean.v1.BeanFactory;
 import framework.core.ClassScanner;
-import framework.annotation.processor.AnnotationProcessor;
+import framework.annotation.processor.v1.AnnotationProcessor;
 import framework.web.server.TomcatServer;
 import org.apache.catalina.LifecycleException;
 
@@ -23,8 +23,9 @@ public class MySpringApplication {
         try {
             List<Class<?>> classList = ClassScanner.scannPackage(cls.getPackage().getName());
             classList.forEach( it -> System.out.println("扫描后得到的ClassName:"+it.getName()));
-            BeanFactory.initializeBean(classList);
-            AnnotationProcessor.resolveMappingHandler(classList);
+            BeanFactory beanFactory = new BeanFactory();
+            beanFactory.initializeBean(classList);
+            AnnotationProcessor.resolveMappingHandler(classList, beanFactory);
             tomcatServer.startServer();
         } catch (LifecycleException e) {
             e.printStackTrace();
