@@ -36,4 +36,10 @@ public class MySpringApplication {
         }
     }
 
+    private static void onRefresh(){
+        //1.注册BeanDefinition
+
+
+    }
+
 }

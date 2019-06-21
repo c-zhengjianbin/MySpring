@@ -1,10 +1,9 @@
 package framework.bean.v2;
 
 import framework.bean.definition.BeanDefinition;
-import framework.bean.factory.AbstractDefaultBeanFactory;
+import framework.bean.factory.AbstractBeanFactory;
 
-import java.beans.ExceptionListener;
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author : xiaoheshang
@@ -13,7 +12,9 @@ import java.util.List;
  * @Param :
  * @function : 实例化Bean 工厂，
  */
-public class BeanFactory extends AbstractDefaultBeanFactory {
+public class DefaultBeanFactory extends AbstractBeanFactory {
+
+    protected Map<Class<?>, BeanDefinition> beanDefinitionMap;
 
     @Override
     public Object getBean(Class<?> cls) {
@@ -33,8 +34,16 @@ public class BeanFactory extends AbstractDefaultBeanFactory {
 
     @Override
     public Object instantiationBean(Class<?> cls) throws Exception {
-        BeanDefinition beanDefinition = getBeanDefinition(cls);
+        if(!beanDefinitionMap.containsKey(cls)){
+            throw new Exception("not found object :" + cls.getName());
+        }
+        BeanDefinition beanDefinition = beanDefinitionMap.get(cls);
         Object bean = beanDefinition.getAnntionTypeAndProcessor().resolveObject();
         return bean;
     }
+
+    public void setBeanDefinitionMap(Map<Class<?>, BeanDefinition> beanDefinitionMap) {
+        this.beanDefinitionMap = beanDefinitionMap;
+    }
+
 }

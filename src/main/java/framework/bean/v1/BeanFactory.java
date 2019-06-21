@@ -3,13 +3,10 @@ package framework.bean.v1;
 import framework.annotation.bean.Autowired;
 import framework.annotation.bean.Bean;
 import framework.annotation.mvc.Controller;
-import framework.bean.factory.AbstractDefaultBeanFactory;
+import framework.bean.factory.AbstractBeanFactory;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
 
 /**
  * @author : xiaoheshang
@@ -18,7 +15,7 @@ import java.util.function.Consumer;
  * @Param :
  * @function : 实例化Bean 工厂，Bean 的依赖注入在初始化时触发
  */
-public class BeanFactory extends AbstractDefaultBeanFactory {
+public class BeanFactory extends AbstractBeanFactory {
 
     /**
      * @author : xiaoheshang

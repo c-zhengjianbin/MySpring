@@ -9,7 +9,7 @@ import java.util.List;
  * @Param :
  * @function :
  */
-public interface DefaultBeanFactory {
+public interface BeanFactory {
 
    /**
     * @author : xiaoheshang

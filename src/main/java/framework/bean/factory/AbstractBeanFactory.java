@@ -1,8 +1,5 @@
 package framework.bean.factory;
 
-import framework.annotation.bean.Bean;
-import framework.bean.definition.BeanDefinition;
-
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,11 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Param :
  * @function : 默认容器实现类
  */
-public abstract class AbstractDefaultBeanFactory implements DefaultBeanFactory {
+public abstract class AbstractBeanFactory implements BeanFactory {
 
     protected Map<Class<?>, Object> beanContainer = new ConcurrentHashMap<>();
-
-    protected Map<Class<?>, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 
     @Override
     public void initializeBean(List<Class<?>> classList) throws Exception {
@@ -30,11 +25,8 @@ public abstract class AbstractDefaultBeanFactory implements DefaultBeanFactory {
         throw new Exception("AbstractDefaultBeanFactory not support instantiationBean method，Require subclass support");
     }
 
-    protected BeanDefinition getBeanDefinition(Class<?> cls)throws Exception{
-        if(!beanDefinitionMap.containsKey(cls)){
-            throw new Exception(cls.getName()+"not found，please check ！！！");
-        }
-        return beanDefinitionMap.get(cls);
+    @Override
+    public Object getBean(Class<?> cls) throws Exception {
+        throw new Exception("AbstractDefaultBeanFactory not support getBean method，Require subclass support");
     }
-
 }
