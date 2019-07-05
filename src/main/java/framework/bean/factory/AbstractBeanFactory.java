@@ -13,20 +13,26 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class AbstractBeanFactory implements BeanFactory {
 
+
     protected Map<Class<?>, Object> beanContainer = new ConcurrentHashMap<>();
 
+    protected abstract Object createBean(Class<?> cls) throws Exception;
+
     @Override
-    public void initializeBean(List<Class<?>> classList) throws Exception {
-        throw new Exception("AbstractDefaultBeanFactory not support initializeBean method，Require subclass support");
+    public Object getBean(Class<?> cls) {
+       Object object  = beanContainer.get(cls);
+       if(object == null){
+           try {
+               object = createBean(cls);
+           } catch (Exception e) {
+               System.out.println("初始化Bean 失败！！！");
+           }
+       }
+       return object;
     }
 
     @Override
-    public Object instantiationBean(Class<?> cls) throws Exception {
-        throw new Exception("AbstractDefaultBeanFactory not support instantiationBean method，Require subclass support");
-    }
-
-    @Override
-    public Object getBean(Class<?> cls) throws Exception {
-        throw new Exception("AbstractDefaultBeanFactory not support getBean method，Require subclass support");
+    public void setBean(Class<?> cls, Object object) throws Exception {
+        beanContainer.put(cls, object);
     }
 }

@@ -4,7 +4,7 @@ import framework.annotation.mvc.Controller;
 import framework.annotation.mvc.RequestMapping;
 import framework.annotation.mvc.RequestParam;
 import framework.bean.v1.BeanFactory;
-import framework.mappinghandler.ControllerMappingInfo;
+import framework.mappinghandler.v1.ControllerMappingInfo;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;

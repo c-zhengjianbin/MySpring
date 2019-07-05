@@ -25,17 +25,8 @@ public interface BeanFactory {
     * @version: 2.0
     * @time : 2019/6/19 - 1:50 PM
     * @Param :
-    * @function : 初始化实例
+    * @function : 设置Bean 到容器中
     */
-   void initializeBean(List<Class<?>> classList) throws Exception;
-
-   /**
-    * @author : xiaoheshang
-    * @version: 2.0
-    * @time : 2019/6/19 - 2:04 PM
-    * @Param :
-    * @function :
-    */
-   Object instantiationBean(Class<?> cls) throws Exception;
+   void setBean(Class<?> cls, Object object) throws Exception;
 
 }

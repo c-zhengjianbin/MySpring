@@ -1,4 +1,4 @@
-package framework.mappinghandler;
+package framework.mappinghandler.v1;
 
 import framework.bean.v1.BeanFactory;
 

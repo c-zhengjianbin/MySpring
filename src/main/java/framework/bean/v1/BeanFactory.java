@@ -17,6 +17,11 @@ import java.util.List;
  */
 public class BeanFactory extends AbstractBeanFactory {
 
+    @Override
+    protected Object createBean(Class<?> cls) {
+        return null;
+    }
+
     /**
      * @author : xiaoheshang
      *
@@ -37,7 +42,6 @@ public class BeanFactory extends AbstractBeanFactory {
      * @function : 初始化Beans
      * TODO: 需要解决循环注入问题、根据变量名获取实例问题
      */
-    @Override
     public void initializeBean(List<Class<?>> classList){
         classList.forEach(aClass -> {
             if(!aClass.isAnnotationPresent(Bean.class) && !aClass.isAnnotationPresent(Controller.class)){
