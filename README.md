@@ -7,18 +7,18 @@
      
 * ### ☘️功能:
      * #### v1版本🚶‍
-         * 集成Tomcat实现一键启动，自动扫描类，依赖注入。
-         * 实现自定义注解：Controller、RequestMapping、RequestParam等。
-         * 实现自定义Dispatcher处理请求转发。
-         * 版本状态：已完成。
+         * 集成Tomcat实现一键启动，自动扫描类，依赖注入。（已完成）
+         * 实现自定义注解：Controller、RequestMapping、RequestParam等。（已完成）
+         * 实现自定义Dispatcher处理请求转发。（已完成）
      * #### v2版本🏃‍
-         * 将依赖注入由初始化触发升级获取Bean 时触发。
-         * 引入BeanDefinition 描述实例信息
-         * 版本状态：进行中🚧。
-     
+         * 将依赖注入由初始化触发升级获取Bean 时触发。（已完成）
+         * 请求Url 与Controller 映射引入Spring Web 设计思想。（进行中🚧）
+         * 注解处理器引入Spring 思想进行处理。（进行中🚧）
+         * 引入BeanDefinition 描述实例信息。（进行中🚧）
+
 * ### ☘️目录:
      * 项目结构与包名注释🌴。
-    ```
+    ```    
     ├── framework
     │   ├── annotation
     │   │   ├── bean
@@ -29,28 +29,34 @@
     │   │   │   ├── RequestMapping.java
     │   │   │   └── RequestParam.java
     │   │   └── processor-----注解处理器
-    │   │       ├── support-----默认处理器
+    │   │       ├── support-----该包下类未使用
     │   │       │   ├── DefaultAbstractAnnotationProcessor.java
     │   │       │   └── DefaultAnnotationProcessor.java
-    │   │       └── v1
-    │   │           └── AnnotationProcessor.java
+    │   │       ├── v1
+    │   │       │   └── AnnotationProcessor.java
+    │   │       └── v2
+    │   │           └── AnnotationProcessorV2.java
     │   ├── bean
-    │   │   ├── definition
-    │   │   │   └── BeanDefinition.java
-    │   │   ├── factory
-    │   │   │   ├── AbstractDefaultBeanFactory.java
-    │   │   │   └── DefaultBeanFactory.java
+    │   │   ├── definition------该包下类未使用
+    │   │   │   ├── BeanDefinition.java
+    │   │   │   └── DefaultBeanDefinitionFactory.java
+    │   │   ├── factory------容器工厂类，提供容器基本操作
+    │   │   │   ├── AbstractBeanFactory.java
+    │   │   │   └── BeanFactory.java
     │   │   ├── v1
     │   │   │   └── BeanFactory.java
     │   │   └── v2
-    │   │       └── BeanFactory.java
+    │   │       └── DefaultBeanFactory.java
     │   ├── context
     │   ├── core
     │   │   └── ClassScanner.java
     │   ├── mappinghandler------Mapping 处理
-    │   │   └── ControllerMappingInfo.java
+    │   │   ├── v1
+    │   │   │   └── ControllerMappingInfo.java
+    │   │   └── v2
+    │   │       └── ControllerMappingInfo.java
     │   ├── start------启动包
-    │   │   └── MySpringApplication.java
+    │   │   └── MySpringApplication.java------包含V1、V2版本启动方式
     │   └── web
     │       ├── server------Tomcat 配置
     │       │   └── TomcatServer.java
@@ -59,9 +65,12 @@
     └── test------测试包
         ├── MainTest.java
         ├── controller
-        │   └── TestController.java
+        │   ├── TestController.java
+        │   └── TestControllerV2.java
         └── service
-            └── UserService.java
+            ├── UserService.java
+            └── UserServiceV2.java
+            
     ```
     
 ## 二、知识体系
