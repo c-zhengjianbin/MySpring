@@ -1,7 +1,8 @@
 package framework.web.servlet;
 
 import framework.annotation.processor.v1.AnnotationProcessor;
-import framework.mappinghandler.v1.ControllerMappingInfo;
+import framework.annotation.processor.v2.AnnotationProcessorV2;
+import framework.mappinghandler.v2.ControllerMappingInfo;
 
 import javax.servlet.*;
 import java.io.IOException;
@@ -25,7 +26,8 @@ public class MyDispatcherServlet implements Servlet {
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        List<ControllerMappingInfo> controllerMappingInfos = AnnotationProcessor.controllerMappingInfoList;
+        //List<ControllerMappingInfo> controllerMappingInfos = AnnotationProcessor.controllerMappingInfoList;
+        List<ControllerMappingInfo> controllerMappingInfos = AnnotationProcessorV2.getControllerList();
         for(ControllerMappingInfo controllerMappingInfo : controllerMappingInfos){
             try {
                 controllerMappingInfo.invoke(servletRequest, servletResponse);

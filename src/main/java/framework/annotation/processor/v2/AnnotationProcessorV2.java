@@ -14,9 +14,13 @@ import java.util.List;
 /**
  * Created by zhengjianbin on 2019/7/5.
  */
-public class AnnotationProcessor extends DefaultBeanFactory {
+public class AnnotationProcessorV2 extends DefaultBeanFactory {
 
-    public static List<ControllerMappingInfo> controllerMappingInfoList = new ArrayList<>();
+    private final static List<ControllerMappingInfo> controllerMappingInfoList = new ArrayList<>();
+
+    public static List<ControllerMappingInfo> getControllerList(){
+        return controllerMappingInfoList;
+    }
 
     /**
      * @author : zhengjianbin

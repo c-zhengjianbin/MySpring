@@ -33,6 +33,7 @@ public class DefaultBeanFactory extends AbstractBeanFactory {
      * @function :  实例化Bean
      */
     private Object instantiationBean(Class<?> cls) throws Exception{
+        System.out.println("实例化Bean："+cls.getName());
         Object o = null;
         try {
             o = cls.newInstance();
@@ -58,6 +59,7 @@ public class DefaultBeanFactory extends AbstractBeanFactory {
      * @function :  设置Bean 的依赖关系
      */
     private void initializeBeanDi( Class<?> cls, Object object){
+        System.out.println("设置Bean 的依赖关系："+cls.getName());
         Field[] fields = cls.getDeclaredFields();
         for(Field field: fields){
             if(field.isAnnotationPresent(Autowired.class)){
@@ -72,32 +74,6 @@ public class DefaultBeanFactory extends AbstractBeanFactory {
             }
         }
     }
-
-//    @Override
-//    public Object getBean(Class<?> cls) {
-//        Object object = beanContainer.get(cls);
-//        if(object == null){
-//            //触发Bean 实例化以及依赖注入
-//            try {
-//                object = instantiationBean(cls);
-//            } catch (Exception e) {
-//                //TODO 日志功能有待完善
-//                System.out.println();
-//                e.printStackTrace();
-//            }
-//        }
-//        return object;
-//    }
-
-//    @Override
-//    public Object instantiationBean(Class<?> cls) throws Exception {
-//        if(!beanDefinitionMap.containsKey(cls)){
-//            throw new Exception("not found object :" + cls.getName());
-//        }
-//        BeanDefinition beanDefinition = beanDefinitionMap.get(cls);
-//        Object bean = beanDefinition.getAnntionTypeAndProcessor().resolveObject();
-//        return bean;
-//    }
 
     public void setBeanDefinitionMap(Map<Class<?>, BeanDefinition> beanDefinitionMap) {
         this.beanDefinitionMap = beanDefinitionMap;
