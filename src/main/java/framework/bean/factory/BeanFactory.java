@@ -1,9 +1,7 @@
 package framework.bean.factory;
 
-import java.util.List;
-
 /**
- * @author : xiaoheshang
+ * @author : zhengjianbin
  * @version: 2.0 版本新增
  * @time : 2019/6/19 - 1:48 PM
  * @Param :
@@ -12,7 +10,7 @@ import java.util.List;
 public interface BeanFactory {
 
    /**
-    * @author : xiaoheshang
+    * @author : zhengjianbin
     * @version: 2.0
     * @time : 2019/6/19 - 1:50 PM
     * @Param :
@@ -21,7 +19,7 @@ public interface BeanFactory {
    Object getBean(Class<?> cls) throws Exception;
 
    /**
-    * @author : xiaoheshang
+    * @author : zhengjianbin
     * @version: 2.0
     * @time : 2019/6/19 - 1:50 PM
     * @Param :

@@ -3,7 +3,6 @@ package framework.annotation.processor.v2;
 import framework.annotation.mvc.Controller;
 import framework.annotation.mvc.RequestMapping;
 import framework.annotation.mvc.RequestParam;
-import framework.bean.v1.BeanFactory;
 import framework.bean.v2.DefaultBeanFactory;
 import framework.mappinghandler.v2.ControllerMappingInfo;
 
@@ -20,8 +19,8 @@ public class AnnotationProcessor extends DefaultBeanFactory {
     public static List<ControllerMappingInfo> controllerMappingInfoList = new ArrayList<>();
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version : 2.0
      * @time : 2019/6/13 - 1:41 PM
      * @Param :
      * @function : 解析扫描到的类包含的注解
@@ -35,8 +34,8 @@ public class AnnotationProcessor extends DefaultBeanFactory {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version : 2.0
      * @time : 2019/6/13 - 1:41 PM
      * @Param :
      * @function : 处理Controller 注解

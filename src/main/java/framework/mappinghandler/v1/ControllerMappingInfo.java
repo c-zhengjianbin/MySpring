@@ -10,8 +10,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * @author : xiaoheshang
- *
+ * @author : zhengjianbin
+ * @version: 1.0
  * @time : 2019/6/12 - 2:37 PM
  * @Param :
  * @function : 每个方法映射所包含的信息
@@ -33,8 +33,8 @@ public class ControllerMappingInfo {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version: 1.0
      * @time : 2019/6/13 - 1:33 PM
      * @Param :
      * @function : 根据请求uri，调用相应对象方法

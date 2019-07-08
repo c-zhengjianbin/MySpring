@@ -8,11 +8,11 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 /**
- * @author : xiaoheshang
- * @version: 2.0 ，Bean 的依赖注入由第一次获取Bean 时触发
+ * @author : zhengjianbin
+ * @version: 2.0
  * @time : 2019/6/13 - 2:03 PM
  * @Param :
- * @function : 实例化Bean 工厂，
+ * @function : 实例化Bean 工厂，Bean 的依赖注入由第一次获取Bean 时触发
  */
 public class DefaultBeanFactory extends AbstractBeanFactory {
 
@@ -26,7 +26,7 @@ public class DefaultBeanFactory extends AbstractBeanFactory {
     }
 
     /**
-     * @author : xiaoheshang
+     * @author : zhengjianbin
      * @version: 2.0
      * @time : 2019/6/19 - 1:50 PM
      * @Param :
@@ -51,7 +51,7 @@ public class DefaultBeanFactory extends AbstractBeanFactory {
     }
 
     /**
-     * @author : xiaoheshang
+     * @author : zhengjianbin
      * @version: 2.0
      * @time : 2019/6/19 - 1:50 PM
      * @Param :

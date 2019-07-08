@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author : xiaoheshang
- *
+ * @author : zhengjianbin
+ * @version : 1.0
  * @time : 2019/6/12 - 2:57 PM
  * @Param :
  * @function : 注解处理器
@@ -23,8 +23,8 @@ public class AnnotationProcessor {
         public static List<ControllerMappingInfo> controllerMappingInfoList = new ArrayList<>();
 
         /**
-         * @author : xiaoheshang
-         *
+         * @author : zhengjianbin
+         * @version : 1.0
          * @time : 2019/6/13 - 1:41 PM
          * @Param :
          * @function : 解析扫描到的类包含的注解
@@ -38,8 +38,8 @@ public class AnnotationProcessor {
         }
 
         /**
-         * @author : xiaoheshang
-         *
+         * @author : zhengjianbin
+         * @version : 1.0
          * @time : 2019/6/13 - 1:41 PM
          * @Param :
          * @function : 处理Controller 注解

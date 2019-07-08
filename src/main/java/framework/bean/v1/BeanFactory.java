@@ -9,8 +9,8 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 /**
- * @author : xiaoheshang
- *
+ * @author : zhengjianbin
+ * @version : 1.0
  * @time : 2019/6/13 - 2:03 PM
  * @Param :
  * @function : 实例化Bean 工厂，Bean 的依赖注入在初始化时触发
@@ -23,8 +23,8 @@ public class BeanFactory extends AbstractBeanFactory {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version : 1.0
      * @time : 2019/6/13 - 2:06 PM
      * @Param :
      * @function : 从容器中获取Bean
@@ -35,8 +35,8 @@ public class BeanFactory extends AbstractBeanFactory {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version : 1.0
      * @time : 2019/6/13 - 2:19 PM
      * @Param :
      * @function : 初始化Beans

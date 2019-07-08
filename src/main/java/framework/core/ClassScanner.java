@@ -11,8 +11,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * @author : xiaoheshang
- *
+ * @author : zhengjianbin
+ * @version: 1.0
  * @time : 2019/6/12 - 1:19 PM
  * @Param :
  * @function : 通过包名获取包下的类型
@@ -41,8 +41,8 @@ public class ClassScanner {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version : 1.0
      * @time : 2019/6/12 - 5:19 PM
      * @Param :
      * @function : 从普通文件中提取ClassName
@@ -68,8 +68,8 @@ public class ClassScanner {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version: 1.0
      * @time : 2019/6/12 - 5:45 PM
      * @Param :
      * @function : 对.class 文件，进行文件名裁剪
@@ -82,8 +82,8 @@ public class ClassScanner {
     }
 
     /**
-     * @author : xiaoheshang
-     *
+     * @author : zhengjianbin
+     * @version : 1.0
      * @time : 2019/6/12 - 5:18 PM
      * @Param :
      * @function : 从Jar 文件中提取ClassName

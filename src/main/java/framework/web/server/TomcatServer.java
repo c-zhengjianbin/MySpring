@@ -7,8 +7,8 @@ import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 
 /**
- * @author : xiaoheshang
- *
+ * @author : zhengjianbin
+ * @version: 1.0
  * @time : 2019/6/11 - 4:15 PM
  * @Param :
  * @function : 对Tomcat 进行封装

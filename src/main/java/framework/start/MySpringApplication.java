@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @author : xiaoheshang
+ * @author : zhengjianbin
  *
  * @time : 2019/6/11 - 4:04 PM
  * @Param :
@@ -19,6 +19,31 @@ import java.util.List;
 public class MySpringApplication {
 
     public static void run(Class<?> cls, String[] args){
+        v1StartSpringboot(cls, args);
+
+
+    }
+
+
+    /**
+     * @author : zhengjianbin
+     * @version: 2.0
+     * @time : 2019/7/8 - 11:23 AM
+     * @Param : 
+     * @function : 2.0 版本启动SpringBoot
+     */
+    private static void v2StartSpringboot(Class<?> cls, String[] args){
+    }
+
+
+    /**
+     * @author : zhengjianbin
+     * @version: 1.0
+     * @time : 2019/6/13 - 2:03 PM
+     * @Param :
+     * @function : 1.0 版本启动SpringBoot
+     */
+    private static void v1StartSpringboot(Class<?> cls, String[] args){
         TomcatServer tomcatServer = new TomcatServer(args);
         try {
             List<Class<?>> classList = ClassScanner.scannPackage(cls.getPackage().getName());
@@ -34,12 +59,6 @@ public class MySpringApplication {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void onRefresh(){
-        //1.注册BeanDefinition
-
-
     }
 
 }

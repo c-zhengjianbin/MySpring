@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @author : xiaoheshang
- *
+ * @version : 1.0
  * @time : 2019/6/13 - 1:54 PM
  * @Param :
  * @function : 实例化Bean
