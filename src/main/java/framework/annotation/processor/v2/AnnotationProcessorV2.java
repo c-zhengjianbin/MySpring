@@ -32,7 +32,25 @@ public class AnnotationProcessorV2 extends DefaultBeanFactory {
     public void resolveMappingHandler(List<Class<?>> classes){
         for(Class<?>  cls: classes){
             if(cls.isAnnotationPresent(Controller.class)){
+                String controllerUrl = cls.getDeclaredAnnotation(RequestMapping.class).value();
+                System.out.println(controllerUrl);
                 handleControllerAnnotation(cls);
+            }
+        }
+    }
+
+    /**
+     * @author : zhengjianbin
+     * @version: 2.0
+     * @time : 2019/7/16 - 3:14 PM
+     * @Param :
+     * @function : 将URL 与 Handler 进行映射
+     */
+    public void registerUrlHandler(List<Class<?>> classes){
+        for(Class<?>  cls: classes){
+            if(cls.isAnnotationPresent(Controller.class)){
+                String controllerUrl = cls.getDeclaredAnnotation(RequestMapping.class).value();
+                registerHandler(controllerUrl, getBean(cls));
             }
         }
     }
@@ -45,6 +63,7 @@ public class AnnotationProcessorV2 extends DefaultBeanFactory {
      * @function : 处理Controller 注解
      */
     private void handleControllerAnnotation(Class<?> cls){
+        Object o = new Object();
         Method[] methods = cls.getDeclaredMethods();
         for(Method method : methods){
             if(!method.isAnnotationPresent(RequestMapping.class)){

@@ -5,6 +5,7 @@ import framework.bean.definition.BeanDefinition;
 import framework.bean.factory.AbstractBeanFactory;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,6 +18,8 @@ import java.util.Map;
 public class DefaultBeanFactory extends AbstractBeanFactory {
 
     protected Map<Class<?>, BeanDefinition> beanDefinitionMap;
+
+    private static final Map<String, Object> URL_AND_HANDLER = new HashMap();
 
     @Override
     protected Object createBean(Class<?> cls) throws Exception {
@@ -77,6 +80,19 @@ public class DefaultBeanFactory extends AbstractBeanFactory {
 
     public void setBeanDefinitionMap(Map<Class<?>, BeanDefinition> beanDefinitionMap) {
         this.beanDefinitionMap = beanDefinitionMap;
+    }
+
+    public void registerHandler(String url, Object handler){
+        URL_AND_HANDLER.put(url, handler);
+    }
+
+    public Object getHandler(String url) throws Exception{
+        Object handler = URL_AND_HANDLER.get(url);
+        if(handler == null){
+            System.out.println("通过Url 获取Handler，Url 为："+url);
+            throw new Exception("根据Url 获取Handler 出错......");
+        }
+        return handler;
     }
 
 }

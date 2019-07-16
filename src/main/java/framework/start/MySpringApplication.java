@@ -40,7 +40,8 @@ public class MySpringApplication {
             //2.解析Controller (依赖注入在获取Bean 时触发)
             //TODO 此处的AnnotationProcessorV2 可通过容器获取
             AnnotationProcessorV2 annotationProcessorV2 = new AnnotationProcessorV2();
-            annotationProcessorV2.resolveMappingHandler(classes);
+//            annotationProcessorV2.resolveMappingHandler(classes);
+            annotationProcessorV2.registerUrlHandler(classes);
             //3.启动Tomcat
             TomcatServer tomcatServer = new TomcatServer(args);
             tomcatServer.startServer();

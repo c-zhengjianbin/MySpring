@@ -10,6 +10,7 @@ import test.service.UserService;
  * Created by zhengjianbin on 2019/6/12.
  */
 @Controller
+@RequestMapping("/testController")
 public class TestController {
 
     @Autowired
