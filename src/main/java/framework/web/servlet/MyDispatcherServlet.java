@@ -4,12 +4,14 @@ import framework.annotation.processor.v1.AnnotationProcessor;
 import framework.annotation.processor.v2.AnnotationProcessorV2;
 import framework.bean.v2.DefaultBeanFactory;
 import framework.mappinghandler.v2.ControllerMappingInfo;
+import framework.mappinghandler.v2.MethodInvoke;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -63,7 +65,16 @@ public class MyDispatcherServlet extends DefaultBeanFactory implements Servlet  
     }
 
     public boolean invoke(ServletRequest servletRequest, ServletResponse servletResponse){
-
+        String reqUri = ((HttpServletRequest) servletRequest).getRequestURI();
+        if(reqUri.contains("/favicon.ico")){
+            return false;
+        }
+        try {
+            Method method = DefaultBeanFactory.getMethodByUrl(reqUri);
+            MethodInvoke.methodInvoke(getBean(method.getDeclaringClass()), method, servletResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return true;
     }
 }

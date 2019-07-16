@@ -12,7 +12,7 @@
          * 实现自定义Dispatcher处理请求转发。（已完成）
      * #### v2版本🏃‍
          * 将依赖注入由初始化触发升级获取Bean 时触发。（已完成）
-         * 请求Url 与Controller 映射引入Spring Web 设计思想。（进行中🚧）
+         * 请求Url 与Controller 映射引入Spring Web 设计思想。（已完成）
          * Spring 事务（尝试进行中🚧）
 
 * ### ☘️目录:

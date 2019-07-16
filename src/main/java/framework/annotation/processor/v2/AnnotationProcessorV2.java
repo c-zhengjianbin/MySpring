@@ -50,7 +50,11 @@ public class AnnotationProcessorV2 extends DefaultBeanFactory {
         for(Class<?>  cls: classes){
             if(cls.isAnnotationPresent(Controller.class)){
                 String controllerUrl = cls.getDeclaredAnnotation(RequestMapping.class).value();
-                registerHandler(controllerUrl, getBean(cls));
+                Method[] methods = cls.getDeclaredMethods();
+                for(Method method : methods){
+                    String methodUrl = method.getDeclaredAnnotation(RequestMapping.class).value();
+                    registerHandler(controllerUrl+methodUrl, method);
+                }
             }
         }
     }
